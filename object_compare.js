@@ -29,7 +29,6 @@ Object.keys(object2)
 
 console.log(JSON.stringify(order1) === JSON.stringify(order2));
 
-______________________________________________________________________;
 // 2.Code to display all the country flags in the console:
 
 var request = new XMLHttpRequest();
@@ -46,7 +45,7 @@ request.onload = function () {
     console.log(result[i].flag);
   }
 };
-_______________________________________________________________________;
+
 // 3.Code to print all the countries names,regions,sub-region and population:
 
 var request = new XMLHttpRequest();
