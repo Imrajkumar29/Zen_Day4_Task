@@ -1,3 +1,4 @@
+// 1.To compare two JSON have the same properties without order
 var object1 = {
   name: "Person 1",
   age: 5,
@@ -27,3 +28,41 @@ Object.keys(object2)
   });
 
 console.log(JSON.stringify(order1) === JSON.stringify(order2));
+
+______________________________________________________________________;
+// 2.Code to display all the country flags in the console:
+
+var request = new XMLHttpRequest();
+
+request.open("GET", "https://restcountries.com/v3.1/all");
+
+request.send();
+
+request.onload = function () {
+  var data = request.response;
+  var result = JSON.parse(data);
+
+  for (var i = 0; i < result.length; i++) {
+    console.log(result[i].flag);
+  }
+};
+_______________________________________________________________________;
+// 3.Code to print all the countries names,regions,sub-region and population:
+
+var request = new XMLHttpRequest();
+
+request.open("GET", "https://restcountries.com/v3.1/all");
+
+request.send();
+
+request.onload = function () {
+  var data = request.response;
+  var result = JSON.parse(data);
+
+  for (var i = 0; i < result.length; i++) {
+    console.log(result[i].name.common);
+    console.log(result[i].region);
+    console.log(result[i].subregion);
+    console.log(result[i].population);
+  }
+};
