@@ -40,7 +40,7 @@ request.send();
 request.onload = function () {
   var data = request.response;
   var result = JSON.parse(data);
-
+  console.log("request-status : ", request.status);
   for (var i = 0; i < result.length; i++) {
     console.log(result[i].name.common, " - ", result[i].flag);
   }
