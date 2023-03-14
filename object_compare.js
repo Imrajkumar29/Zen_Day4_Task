@@ -38,11 +38,25 @@ request.open("GET", "https://restcountries.com/v3.1/all");
 request.send();
 
 request.onload = function () {
-  var data = request.response;
-  var result = JSON.parse(data);
-  console.log("request-status : ", request.status);
-  for (var i = 0; i < result.length; i++) {
-    console.log(result[i].name.common, " - ", result[i].flag);
+  if (request.status != 200) {
+    // analyze HTTP status of the response
+    console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+  } else {
+    var data = request.response;
+    var result = JSON.parse(data);
+    console.log("request-status : ", request.status);
+    for (var i = 0; i < result.length; i++) {
+      console.log(result[i].name.common, " - ", result[i].flag);
+    }
+  }
+};
+
+request.onprogress = function (event) {
+  if (event.lengthComputable) {
+    console.log(`Received ${event.loaded} of ${event.total} bytes`);
+  } else {
+    // report progress
+    console.log(`Loaded ${event.loaded} bytes`);
   }
 };
 
